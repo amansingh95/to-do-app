@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './style.css';
-
+import './App.css'
 export default function App() {
   const [newToDo, setNewToDo] = useState('');
   const [todoList, setTodoList] = useState([]);
@@ -8,10 +7,16 @@ export default function App() {
   const [editToDoValue, setEditToDoValue] = useState('');
   const [editToDoId, setEditToDoId] = useState('');
 
+
   const setNewToDoList = () => {
-    setTodoList([...todoList, { todo: newToDo, todoId: Date.now() }]);
-    setNewToDo('');
+    if (newToDo !== '') {
+      setTodoList([...todoList, { todo: newToDo, todoId: Date.now() }]);
+      setNewToDo('');
+    } else {
+      return
+    }
   };
+
   const todoEdit = (todoId) => {
     setEditToDo(true);
     todoList.map((ele) => {
@@ -30,7 +35,6 @@ export default function App() {
       return ele;
     });
     setTodoList(newToDoList);
-    setEditToDoValue('');
   };
   const cancleUpdate = () => {
     todoList.map((ele) => {
@@ -44,44 +48,61 @@ export default function App() {
   };
   return (
     <div>
+
       {EditToDo ? (
-        <div>
-          <h1>Edit TO DO</h1>
+
+        <div className='main-container'>
+          <div className='title'> <h1 >Edit TO DO</h1></div>
           {/* Edit part Start */}
-          <p>Edit TO DO</p>
-          <input
-            placeholder="Create New To Do"
-            value={editToDoValue}
-            onChange={(e) => setEditToDoValue(e.target.value)}
-          />
-          &nbsp;
-          <button onClick={updateToDo}> Update </button>&nbsp;
-          <button onClick={cancleUpdate}> Cancle </button>
+          <div className="add-wrapper">
+
+            <input
+              type="text"
+              name="focus"
+              className="add-box"
+              placeholder="Edit To Do"
+              value={editToDoValue}
+              data-testid="edit-input"
+              onChange={(e) => setEditToDoValue(e.target.value)} />
+            <button onClick={updateToDo} data-testid="update-button" className='update-button'> Update </button>&nbsp;
+            <button onClick={cancleUpdate} data-testid="cancle-button" className='cancle-button'> Cancle </button>
+
+          </div>
+
           {/* Edit part End*/}
         </div>
       ) : (
-        <div>
-          <h1>Add TO DO</h1>
+        <div className='main-container'>
+          <div className='title'> <h1>Add TO DO</h1></div>
           {/* Add part Start */}
-          <p>Add TO DO</p>
-          <input
-            placeholder="Create New To Do"
-            value={newToDo}
-            onChange={(e) => setNewToDo(e.target.value)}
-          />
+          <div className="add-wrapper">
+
+            <input
+              type="text"
+              name="focus"
+              className="add-box"
+              placeholder="Create New To Do"
+              data-testid="add-input"
+              value={newToDo}
+              onChange={(e) => setNewToDo(e.target.value)} />
+            <button className="add-icon" onClick={setNewToDoList} data-testid="add-button" ></button>
+
+          </div>
+          <div >
+          </div>
           &nbsp; &nbsp;
-          <button onClick={setNewToDoList}> ADD </button>
           {/* Add part End */}
         </div>
       )}
-      <ul style={{ 'list-style-type': 'none' }}>
+      <ul data-testid="todo-item-list" className='todo-item-list'>
+        {console.log("oooo>>", todoList)}
         {todoList.map((list, index) => {
           return (
-            <li key={list.todoId}>
+            <li key={list.todoId} className='todolist'>
               {list.todo}&nbsp; &nbsp;
-              <button onClick={() => todoEdit(list.todoId)}>Edit</button>&nbsp;
+              <button data-testid="edit-button" className='edit-button' onClick={() => todoEdit(list.todoId)}>Edit</button>&nbsp;
               &nbsp;
-              <button onClick={() => deleteTodo(list.todoId)}>Delete</button>
+              <button data-testid="delete-button" className='delete-button' onClick={() => deleteTodo(list.todoId)}>Delete</button>
             </li>
           );
         })}

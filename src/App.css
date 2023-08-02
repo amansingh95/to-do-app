@@ -1,0 +1,138 @@
+body {
+  background-color: #f1f1f1;
+  font-family: Helvetica, Arial, Verdana;
+}
+.title {
+  width: 21%;
+  margin: auto;
+}
+.todo-item-list {
+  list-style-type: none;
+  width: 22%;
+  margin: auto;
+}
+.add-box,
+.add-icon,
+.add-wrapper {
+  position: relative;
+  padding: 10px;
+}
+.add-wrapper {
+  width: 500px;
+  margin: auto;
+  margin-top: 50px;
+}
+.add-box {
+  width: 60%;
+  border: 1px solid #ccc;
+  outline: 0;
+  border-radius: 15px;
+}
+.add-box:focus {
+  box-shadow: 0 0 15px 5px #b0e0ee;
+  border: 2px solid #bebede;
+}
+.add-icon {
+  border: 1px solid transparent;
+  background-color: transparent;
+  display: inline-block;
+  vertical-align: middle;
+  outline: 0;
+  cursor: pointer;
+}
+.add-icon:after {
+  content: '+';
+  display: block;
+  width: 25px;
+  height: 22px;
+  position: absolute;
+  background-color: #d71d25;
+  z-index: 1;
+  right: 35px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 2px;
+  border-radius: 50%;
+  text-align: center;
+  color: white;
+  font-weight: normal;
+  font-size: 20px;
+  box-shadow: 0 0 2px #e50f0f;
+  cursor: pointer;
+}
+.add-box:not(:valid) ~ .add-icon {
+  display: none;
+}
+.update-button {
+  border: 1px solid #51ee08;
+  color: #51ee08;
+  background-color: white;
+  border-radius: 20px;
+  height: 36px;
+  width: 77px;
+  display: inline-block;
+  vertical-align: middle;
+  outline: 0;
+  cursor: pointer;
+  font-weight: 800;
+}
+.update-button:hover {
+  border: 1px solid white;
+  color: white;
+  background-color: #51ee08;
+}
+.cancle-button {
+  border: 1px solid #6a6161;
+  color: #6a6161;
+  background-color: white;
+  border-radius: 20px;
+  height: 36px;
+  width: 77px;
+  display: inline-block;
+  vertical-align: middle;
+  outline: 0;
+  cursor: pointer;
+  font-weight: 800;
+}
+.cancle-button:hover {
+  border: 1px solid white;
+  color: white;
+  background-color: #6a6161;
+}
+.edit-button {
+  border: 1px solid #3a08ee;
+  color: #3a08ee;
+  background-color: white;
+  border-radius: 20px;
+  height: 36px;
+  width: 77px;
+  display: inline-block;
+  vertical-align: middle;
+  outline: 0;
+  cursor: pointer;
+  font-weight: 800;
+}
+.edit-button:hover {
+  border: 1px solid white;
+  color: white;
+  background-color: #3a08ee;
+}
+.delete-button {
+  border: 1px solid #ee0808;
+  color: #ee0808;
+  background-color: white;
+  border-radius: 20px;
+  height: 36px;
+  width: 77px;
+  display: inline-block;
+  vertical-align: middle;
+  outline: 0;
+  cursor: pointer;
+  font-weight: 800;
+}
+.delete-button:hover {
+  border: 1px solid white;
+  color: white;
+  background-color: #ee0808;
+}
